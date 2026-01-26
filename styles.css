@@ -178,6 +178,7 @@ ul:nth-of-type(1) li strong{
 }
 
 .photo{
+  width: min(420px, 100%);   /* фото не шире 420px */
   margin: 12px 0 16px;
   border-radius: 14px;
   border:1px solid rgba(255,255,255,.08);
@@ -187,12 +188,13 @@ ul:nth-of-type(1) li strong{
 
 .photo img{
   width:100%;
-  height:auto;
+  height:auto;              /* важно: не фиксируем высоту */
   display:block;
-  object-fit:contain;
+  object-fit:contain;       /* не режем */
   filter: grayscale(1) contrast(1.08) brightness(.92);
   background: rgba(0,0,0,.25);
 }
+
 
 .photo__cap{
   font-family: ui-monospace, monospace;
