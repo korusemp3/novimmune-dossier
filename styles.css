@@ -1,1 +1,178 @@
-ok
+:root{
+  --bg:#06070a;
+  --panel: rgba(10,14,20,.72);
+  --line: rgba(255,255,255,.10);
+  --text:#eaf2ff;
+  --muted:#97a6c6;
+  --ok:#44ffb3;
+  --warn:#ff4d7d;
+  --cyan:#36d9ff;
+
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --r:16px;
+  --shadow: 0 18px 50px rgba(0,0,0,.58);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:var(--sans);
+  background:
+    radial-gradient(900px 600px at 60% 10%, rgba(54,217,255,.07), transparent 60%),
+    radial-gradient(900px 600px at 20% 40%, rgba(68,255,179,.05), transparent 60%),
+    var(--bg);
+  padding:28px 16px 40px;
+  overflow-x:hidden;
+}
+
+/* subtle grid */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity:.08;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* scanlines */
+body::after{
+  content:"";
+  position:fixed; inset:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.03) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity:.16;
+  pointer-events:none;
+  z-index:1;
+}
+
+h1,h2,p,ul,li{position:relative; z-index:2}
+
+h1{
+  margin:0 0 6px;
+  font-weight:900;
+  letter-spacing:.14em;
+  font-size:18px;
+  text-transform:uppercase;
+}
+p strong{
+  font-family:var(--mono);
+  letter-spacing:.12em;
+  font-size:12px;
+  color:var(--muted);
+}
+hr{
+  border:none;
+  border-top:1px solid var(--line);
+  margin:18px 0;
+  position:relative;
+  z-index:2;
+  opacity:.8;
+}
+
+h2{
+  margin:0 0 10px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.16em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+p{
+  margin:0 0 10px;
+  line-height:1.6;
+  color:rgba(234,242,255,.92);
+  max-width: 980px;
+}
+
+ul{
+  margin:0;
+  padding-left:18px;
+  line-height:1.7;
+  max-width: 980px;
+}
+
+li{color:rgba(234,242,255,.92)}
+
+/* give the doc a “card” feel */
+body > *{
+  max-width: 980px;
+}
+
+body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+body > h1,
+body > p,
+body > hr,
+body > h2,
+body > ul{
+  width:min(980px, 100%);
+}
+
+body > h1,
+body > p{
+  padding:0 4px;
+}
+
+/* main “document panel” look */
+body > hr:first-of-type{
+  margin-top:14px;
+}
+
+body > h2,
+body > ul,
+body > p{
+  background: linear-gradient(180deg, rgba(10,14,20,.72), rgba(6,8,12,.72));
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow: var(--shadow);
+  border-radius: var(--r);
+  padding:14px 14px;
+}
+
+body > h2{
+  display:inline-block;
+  padding:12px 14px;
+  margin-top:0;
+  margin-bottom:10px;
+  background: rgba(10,14,20,.55);
+}
+
+/* little “classified” accent */
+p strong{
+  display:inline-block;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(10,14,20,.55);
+}
+
+/* make first block (subject) look like key-value vibe */
+ul:nth-of-type(1) li strong{
+  font-family:var(--mono);
+  color:var(--cyan);
+  font-weight:700;
+  letter-spacing:.06em;
+}
+
+/* responsive spacing */
+@media (max-width:560px){
+  body{padding:18px 12px 32px}
+  h1{font-size:16px}
+}
