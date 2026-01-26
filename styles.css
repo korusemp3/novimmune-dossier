@@ -322,13 +322,13 @@ body::after{
 }
 
 .brand__meta{
-  margin-top:6px;
+  margin-top:4px;
   font-family: var(--mono);
-  font-size:11px;
   letter-spacing:.18em;
+  font-size:10px;
+  color: var(--muted);
+  opacity:.75;
   text-transform: uppercase;
-  color: rgba(140,155,185,.75);
-  opacity:.9;
 }
 
 .brand__title{
