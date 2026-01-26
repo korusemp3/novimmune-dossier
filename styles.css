@@ -204,3 +204,32 @@ ul:nth-of-type(1) li strong{
   border-top:1px dashed rgba(255,255,255,.12);
   text-align:center;
 }
+
+.redact{
+  display:inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.55);
+  color: rgba(234,242,255,.92);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  letter-spacing: .10em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.redact:hover{
+  border-color: rgba(54,217,255,.25);
+}
+
+.redact.is-static{
+  cursor: not-allowed;
+  opacity: .85;
+}
+
+.redact.is-revealed{
+  letter-spacing: .02em;
+  color: rgba(234,242,255,.95);
+  background: rgba(54,217,255,.08);
+  border-color: rgba(54,217,255,.25);
+}
