@@ -320,3 +320,28 @@ body::after{
 .main section.card + section.card{
   margin-top: 4px;
 }
+
+.brand__meta{
+  margin-top:8px;
+  font-size:11px;
+  letter-spacing:.10em;
+  color: rgba(151,166,198,.92);
+  opacity:.95;
+}
+
+.brand__title{
+  position:relative;
+  display:inline-block;
+}
+
+.brand__title:hover{
+  text-shadow: 1px 0 rgba(54,217,255,.35), -1px 0 rgba(255,77,125,.22);
+}
+
+.q:hover{
+  text-shadow: 1px 0 rgba(54,217,255,.28), -1px 0 rgba(255,77,125,.18);
+}
+
+.redact:hover{
+  text-shadow: 1px 0 rgba(54,217,255,.25), -1px 0 rgba(255,77,125,.18);
+}
