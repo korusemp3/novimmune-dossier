@@ -2,78 +2,117 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>NOVIMMUNE // INTERNAL DOSSIER</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand__title">NOVIMMUNE // INTERNAL DOSSIER</div>
+      <div class="brand__sub">INTERNAL USE ONLY // CLASSIFIED</div>
+    </div>
 
-<h1>NOVIMMUNE // INTERNAL DOSSIER</h1>
-<p><strong>INTERNAL USE ONLY // CLASSIFIED</strong></p>
+    <nav class="quick">
+      <a href="#subject" class="q">SUBJECT</a>
+      <a href="#objective" class="q">OP</a>
+      <a href="#incident" class="q">INCIDENT</a>
+      <a href="#notes" class="q">NOTES</a>
+    </nav>
+  </header>
 
-<hr>
+  <main class="layout">
 
-<h2>СУБЪЕКТ</h2>
+    <aside class="side">
+      <section class="card" id="subject">
+        <div class="card__title">СУБЪЕКТ</div>
 
-<div class="photo">
-  <img src="assets/portrait.jpg" alt="Эллис Вейл — идентификация субъекта">
-  <div class="photo__cap">SUBJECT IMAGE // PRE-INCIDENT</div>
-</div>
-  
-<ul>
-  <li><strong>Имя:</strong> Эллис Вейл</li>
-  <li><strong>Возраст:</strong> ~23</li>
-  <li><strong>Происхождение:</strong> Швейцария (EU Pharma Zone)</li>
-  <li><strong>Роль:</strong> Полевой медицинский сотрудник</li>
-  <li><strong>Статус:</strong> Предположительно погиб (потери в поле)</li>
-</ul>
+        <div class="photo">
+          <img src="assets/portrait.jpg" alt="Эллис Вейл — идентификация субъекта">
+          <div class="photo__cap">SUBJECT IMAGE // PRE-INCIDENT</div>
+        </div>
 
-<hr>
+        <ul class="kvlist">
+          <li><span>Имя</span><b>Эллис Вейл</b></li>
+          <li><span>Возраст</span><b>~23</b></li>
+          <li><span>Происхождение</span><b>Швейцария (EU Pharma Zone)</b></li>
+          <li><span>Роль</span><b>Полевой мед. сотрудник</b></li>
+          <li><span>Статус</span><b class="warn">Предположительно погиб</b></li>
+        </ul>
 
-<h2>ЦЕЛЬ ОПЕРАЦИИ</h2>
+        <div class="tags">
+          <span class="tag">FIELD</span>
+          <span class="tag">CLINICAL</span>
+          <span class="tag">LATAM</span>
+        </div>
 
-<p>
-Экспедиция Novimmune была направлена на изучение эндемичных растений региона LATAM,
-демонстрирующих аномальное влияние на нейронную активность человека.
-</p>
+        <div class="micro mono">
+          Presumed Deceased (Field Loss)<br>
+          No remains recovered. Physical confirmation unavailable.
+        </div>
+      </section>
+    </aside>
 
-<p>
-Рабочее название программы:
-<span class="redact is-static">████████████</span>.
-Код проекта:
-<span class="redact" data-reveal="NV-LATAM-NA-47">███████████</span>
-</p>
+    <section class="main">
+      <section class="card" id="objective">
+        <div class="card__title">ЦЕЛЬ ОПЕРАЦИИ</div>
 
-<p>
-Предварительные данные указывали на способность отдельных образцов влиять на
-<span class="redact" data-reveal="память (эпизодическая/ассоциативная)">██████</span>,
-эмоциональное восприятие и состояние сознания.
-</p>
+        <p>
+          Экспедиция Novimmune была направлена на изучение эндемичных растений региона LATAM,
+          демонстрирующих аномальное влияние на нейронную активность человека.
+        </p>
 
-<p>
-Этический статус проекта: <strong>НА ПЕРЕСМОТРЕ</strong>.
-</p>
+        <p>
+          Рабочее название программы:
+          <span class="redact is-static">████████████</span>.
+          Код проекта:
+          <span class="redact" data-reveal="NV-LATAM-NA-47">███████████</span>
+        </p>
 
-<hr>
+        <p>
+          Предварительные данные указывали на способность отдельных образцов влиять на
+          <span class="redact" data-reveal="память (эпизодическая/ассоциативная)">██████</span>,
+          эмоциональное восприятие и состояние сознания.
+        </p>
 
-<h2>ИНЦИДЕНТ</h2>
-<p>
-Экспедиция завершилась полной потерей персонала вследствие внешнего вмешательства.
-</p>
-<p>
-<strong>Останки субъекта не обнаружены.</strong><br>
-Физическое подтверждение статуса отсутствует.
-</p>
+        <p class="muted">
+          Этический статус проекта: <span class="pill">НА ПЕРЕСМОТРЕ</span>
+        </p>
+      </section>
 
-<hr>
+      <section class="card" id="incident">
+        <div class="card__title">ИНЦИДЕНТ</div>
 
-<h2>НЕАВТОРИЗОВАННЫЕ ПОЛЕВЫЕ ЗАМЕТКИ</h2>
-<ul>
-  <li>Растения реагируют не на свет. Скорее — на присутствие.</li>
-  <li>У подопытных повторяются одинаковые сны.</li>
-  <li>Иногда кажется, что объект наблюдает в ответ.</li>
-</ul>
+        <p>
+          Экспедиция завершилась полной потерей персонала вследствие внешнего вмешательства.
+        </p>
 
-<script src="script.js"></script>
-  
+        <p>
+          Ответственный внешний субъект:
+          <span class="redact is-static">████████</span>.
+          Подтверждение личности:
+          <span class="redact is-static">НЕДОСТУПНО</span>.
+        </p>
+
+        <p class="muted">
+          Останки субъекта не обнаружены. Физическое подтверждение статуса отсутствует.
+        </p>
+      </section>
+
+      <section class="card" id="notes">
+        <div class="card__title">НЕАВТОРИЗОВАННЫЕ ПОЛЕВЫЕ ЗАМЕТКИ</div>
+        <ul class="list">
+          <li>Растения реагируют не на свет. Скорее — на присутствие.</li>
+          <li>У подопытных повторяются одинаковые сны.</li>
+          <li>Иногда кажется, что объект наблюдает в ответ.</li>
+          <li>Я не уверен, что мы “изучаем” это. Иногда — наоборот.</li>
+        </ul>
+      </section>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
