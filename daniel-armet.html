@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>METACORP // DOSSIER: DANIEL ARMET</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root{
+      --warn:#ff2e4f;
+      --cyan:#ff4d6d;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand__title">METACORP // INTERNAL DOSSIER</div>
+      <div class="brand__sub">INTERNAL USE ONLY // CLASSIFIED</div>
+      <div class="brand__meta mono">
+        DOSSIER REV: 0.1 // SUBJECT: DANIEL ARMET // STATUS: ACTIVE
+      </div>
+    </div>
+
+    <nav class="quick">
+      <a href="../index.html" class="q">TERMINAL</a>
+      <a href="#subject" class="q">SUBJECT</a>
+      <a href="#objective" class="q">OP</a>
+      <a href="#medical" class="q">MED</a>
+      <a href="#notes" class="q">NOTES</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="side">
+      <section class="card" id="subject">
+        <div class="card__title">СУБЪЕКТ</div>
+
+        <div class="photo">
+          <img src="../assets/portrait-placeholder.jpg" alt="Daniel Armet — archival image">
+          <div class="photo__cap">FACE OBSCURED // ARCHIVAL</div>
+        </div>
+
+        <ul class="kvlist">
+          <li><span>Имя</span><b>Даниэль Армет</b></li>
+          <li><span>Роль</span><b>Техник / Агент Metacorp</b></li>
+          <li><span>Номад-ранг</span><b class="warn">ВЫСОКИЙ</b></li>
+          <li><span>Происхождение</span><b class="redact is-static">████████</b></li>
+          <li><span>Статус</span><b>ACTIVE</b></li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">TECH</span>
+          <span class="tag">AGENT</span>
+          <span class="tag">NOMAD-AFFILIATED</span>
+          <span class="tag">CLONE</span>
+        </div>
+
+        <div class="micro mono">
+          Identity acknowledged by subject.<br>
+          Full origin chain: unavailable.
+        </div>
+      </section>
+    </aside>
+
+    <section class="main">
+      <section class="card" id="objective">
+        <div class="card__title">ЦЕЛЬ ОПЕРАЦИЙ</div>
+
+        <p>
+          Субъект задействован в операциях Metacorp по выявлению и контролю
+          неконтролируемых искусственных интеллектов
+          (<span class="pill">ROGUE / UNCHAINED AIs</span>).
+        </p>
+
+        <p class="muted">
+          Метод: нейтрализация / изоляция / удержание — по обстановке.
+          <span class="pill">ACCESS: RESTRICTED</span>
+        </p>
+
+        <p>
+          Предыстория до активации: <span class="redact is-static">НЕДОСТУПНО</span>.
+          Возраст актива: <b>~6 лет</b>.
+        </p>
+
+        <p class="muted">
+          Обучение: интенсивные брейнданс-сессии. Жизненный опыт до интеграции может быть ложным.
+        </p>
+      </section>
+
+      <section class="card" id="medical">
+        <div class="card__title">МЕДИЦИНСКАЯ КАРТА (ВЫДЕРЖКА)</div>
+
+        <ul class="kvlist">
+          <li><span>Нейропрофиль</span><b class="warn">НЕСТАНДАРТНЫЙ</b></li>
+          <li><span>Псих. модель</span><b>Эмпатическая</b></li>
+          <li><span>Соц. адаптация</span><b>ФУНКЦИОНАЛЬНА</b></li>
+          <li><span>Коммуникация</span><b>ПРЯМОЛИНЕЙНАЯ</b></li>
+          <li><span>Дерматология</span><b class="warn">АНОМАЛИЯ / РИСК</b></li>
+          <li><span>Импланты</span><b class="redact" data-reveal="highly augmented">██████</b></li>
+        </ul>
+
+        <p class="muted" style="margin-top:12px">
+          Примечание: маскировка лица бинтами может быть медицинской или поведенческой мерой.
+        </p>
+      </section>
+
+      <section class="card" id="notes">
+        <div class="card__title">ПОЛЕВЫЕ ЗАМЕТКИ</div>
+        <ul class="list">
+          <li>Друзей заводит легко, внимателен к людям.</li>
+          <li>Иногда не считывает «человеческие» социальные правила и говорит слишком прямо.</li>
+          <li>Много моделей поведения выучено по медиа/брейндансам.</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="../script.js"></script>
+</body>
+</html>
