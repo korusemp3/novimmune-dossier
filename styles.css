@@ -374,15 +374,17 @@ body::after{
   .grid2{ grid-template-columns:1fr; }
 }
 
-/* ARCHIVE layout: wider readable column */
+/* ARCHIVE: убираем столбцы полностью */
 .archive .layout{
+  display: block;       /* ломаем grid */
   max-width: 1100px;
-  grid-template-columns: 1fr;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .archive .main{
-  max-width: 760px;     /* читаемая ширина текста */
-  margin: 0 auto;       /* по центру */
+  max-width: 760px;     /* читаемая колонка */
+  margin: 0 auto;
 }
 
 /* make cards breathe a bit more */
