@@ -401,3 +401,30 @@ body::after{
 .archive .main .card + .card{
   margin-top: 12px;
 }
+
+.archive .quick{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.archive .q{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  font-family: var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  color: rgba(234,242,255,.86);
+  text-decoration:none;
+}
+
+.archive .q:hover{
+  border-color: rgba(54,217,255,.25);
+  text-shadow: 1px 0 rgba(54,217,255,.25), -1px 0 rgba(255,77,125,.15);
+}
