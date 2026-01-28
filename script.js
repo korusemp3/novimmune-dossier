@@ -62,8 +62,9 @@ setInterval(() => {
 
 // ===== CYBER PLAGUE: hover glitch sound (fade in/out + stop on leave) =====
 (() => {
-  const card = document.querySelector(".dossier-tile.cyber-plague");
-  document.querySelector("body.cyber-plague"); 
+  const card = 
+  document.querySelector(".dossier-tile.cyber-plague") ||
+  document.querySelector("body.cyber-plague");
   if (!card) return;
 
   const audio = new Audio("assets/whisper.mp3");
