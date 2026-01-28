@@ -234,8 +234,9 @@ setInterval(() => {
       clearInterval(timer);
       // восстановить
       nodes.forEach(el => {
-        if (el.dataset.baseText) el.textContent = el.dataset.baseText;
-      });
+  if (el.dataset.baseText) el.textContent = el.dataset.baseText;
+  el.classList.remove("fx-glitch-red");
+});
     }
   }, everyMs);
 }
