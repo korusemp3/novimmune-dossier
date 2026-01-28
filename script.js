@@ -204,19 +204,31 @@ setInterval(() => {
   const t0 = Date.now();
   const timer = setInterval(() => {
     for (const el of nodes) {
-      const base = el.dataset.baseText;
-      if (!base) continue;
+  const base = el.dataset.baseText;
+  if (!base) continue;
 
-      const arr = base.split("");
-      for (let i = 0; i < arr.length; i++) {
-        const ch = arr[i];
-        if (ch === " " || ch === "\n" || ch === "\t") continue;
-        if (Math.random() < chance) {
-          arr[i] = alphabet[(Math.random() * alphabet.length) | 0];
-        }
-      }
-      el.textContent = arr.join("");
+  const arr = base.split("");
+  let changed = false;
+
+  for (let i = 0; i < arr.length; i++) {
+    const ch = arr[i];
+    if (ch === " " || ch === "\n" || ch === "\t") continue;
+
+    if (Math.random() < chance) {
+      arr[i] = alphabet[(Math.random() * alphabet.length) | 0];
+      changed = true;
     }
+  }
+
+  if (changed) {
+    el.textContent = arr.join("");
+    el.classList.add("fx-glitch-red");
+  } else {
+    el.textContent = base;
+    el.classList.remove("fx-glitch-red");
+  }
+}
+
 
     if (Date.now() - t0 >= durationMs) {
       clearInterval(timer);
