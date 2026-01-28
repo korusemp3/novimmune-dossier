@@ -544,4 +544,14 @@ body::after{
   flex-wrap:wrap;
   gap:8px;
 }
+
+/* HOME PAGE ONLY */
+.home .layout{
+  grid-template-columns: 1fr;
+}
+
+.home .main{
+  max-width: 760px;
+  margin: 0 auto;
+}
 }
