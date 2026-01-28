@@ -635,3 +635,40 @@ body::after{
   61% { opacity: .26; }
   86% { opacity: .20; }
 }
+
+/* ===== GLITCH DISTORTION (GEOMETRY BREAK) ===== */
+
+.dossier-tile.cyber-plague .card{
+  will-change: clip-path, transform;
+  animation: plagueDistort 7.2s infinite steps(1);
+}
+
+@keyframes plagueDistort{
+  /* норма */
+  0%, 92%, 100%{
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+
+  /* искажения */
+  93%{
+    clip-path: inset(4% 0 12% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  94%{
+    clip-path: inset(18% 0 6% 0);
+    transform: translate(2px, -1px);
+  }
+
+  95%{
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+}
+
+.dossier-tile.cyber-plague .card::after{
+  box-shadow:
+    -1px 0 rgba(255,46,46,.35),
+     1px 0 rgba(255,46,46,.15);
+}
