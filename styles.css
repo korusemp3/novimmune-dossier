@@ -1094,3 +1094,34 @@ body::after{
 .dossier-tile:not(.cyber-plague):hover .card::after{
   opacity:.35;
 }
+
+/* ===== Local error state on tiles ===== */
+.dossier-tile.is-error .card{
+  animation: tileErrorShake 280ms steps(1) 1;
+  border-color: rgba(255,46,46,.22);
+  box-shadow: 0 22px 70px rgba(0,0,0,.6);
+}
+
+@keyframes tileErrorShake{
+  0%{ transform: translate(0); }
+  20%{ transform: translate(-2px, 1px); }
+  40%{ transform: translate(2px, -1px); }
+  60%{ transform: translate(-1px, -1px); }
+  80%{ transform: translate(1px, 1px); }
+  100%{ transform: translate(0); }
+}
+
+.tile-errorline{
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: .22em;
+  opacity: .9;
+  user-select: none;
+
+  background: linear-gradient(90deg, rgba(255,46,46,.95), rgba(255,46,46,.25), rgba(255,46,46,.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 0 10px rgba(255,46,46,.18);
+}
