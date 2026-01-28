@@ -261,7 +261,7 @@ setInterval(() => {
 
 SFX.playOnce({ maxVol: 0.24, fadeIn: 90, hold: 800, fadeOut: 260 });
     
-    const DELAY = 1900;
+    const DELAY = 1100;
     
     startGlobalTextGlitch(DELAY);
     
