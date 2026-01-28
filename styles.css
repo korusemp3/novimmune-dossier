@@ -1006,3 +1006,13 @@ body::after{
   color: transparent;
   text-shadow: 0 0 10px rgba(255,46,46,.18);
 }
+
+.redact.is-dynamic{
+  letter-spacing:.14em;
+  animation: redactFlicker 2.4s infinite;
+}
+
+@keyframes redactFlicker{
+  0%,100%{ opacity:.9 }
+  55%{ opacity:.65 }
+}
