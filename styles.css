@@ -1125,3 +1125,34 @@ body::after{
 
   text-shadow: 0 0 10px rgba(255,46,46,.18);
 }
+
+/* ===== GLOBAL AMBIENT SCAN / BREATH (subtle) ===== */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* еле-еле скан + виньетка */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.02),
+      rgba(255,255,255,.02) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    radial-gradient(1200px 700px at 50% 30%, rgba(255,255,255,.04), transparent 60%),
+    radial-gradient(900px 600px at 50% 120%, rgba(0,0,0,.55), transparent 60%);
+
+  opacity: .12;
+  mix-blend-mode: screen;
+  animation: ambientBreath 7.5s ease-in-out infinite;
+}
+
+/* лёгкое “дыхание” */
+@keyframes ambientBreath{
+  0%, 100% { opacity: .10; filter: blur(.0px); }
+  50%      { opacity: .16; filter: blur(.4px); }
+}
