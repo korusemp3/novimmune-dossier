@@ -480,12 +480,10 @@ function stopWhisperNow() {
   }, STEP);
 }
 
-(() => {
-  const el = document.getElementById("sybban");
-  if (!el) return;
+document.addEventListener("click", (e) => {
+  const a = e.target.closest(".userlink[data-rickroll='1']");
+  if (!a) return;
 
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank", "noopener,noreferrer");
-  });
-})();
+  e.preventDefault();
+  window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank", "noopener,noreferrer");
+});
