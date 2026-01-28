@@ -67,6 +67,7 @@ setInterval(() => {
   if (!card) return;
 
   const audio = new Audio("assets/whisper.mp3");
+  window.__whisperAudio = audio;
   audio.preload = "auto";
   audio.loop = true;          // чтобы держало помеху, пока держишь курсор
   audio.volume = 0;           // старт с нуля
@@ -256,10 +257,11 @@ setInterval(() => {
     locked = true;
 
     e.preventDefault();
+    stopWhisperNow();
 
 SFX.playOnce({ maxVol: 0.24, fadeIn: 90, hold: 800, fadeOut: 260 });
     
-    const DELAY = 1100;
+    const DELAY = 1900;
     
     startGlobalTextGlitch(DELAY);
     
@@ -453,3 +455,27 @@ const SFX = (() => {
 
   return { playOnce };
 })();
+
+function stopWhisperNow() {
+  const a = window.__whisperAudio;
+  if (!a) return;
+
+  // мягко гасим за 180мс и стопаем
+  const FADE_MS = 180;
+  const STEP = 16;
+  const start = a.volume ?? 0;
+  const steps = Math.max(1, Math.round(FADE_MS / STEP));
+  let i = 0;
+
+  const t = setInterval(() => {
+    i++;
+    const p = i / steps;
+    a.volume = Math.max(0, start * (1 - p));
+    if (i >= steps) {
+      clearInterval(t);
+      try { a.pause(); } catch {}
+      a.currentTime = 0;
+      a.volume = 0;
+    }
+  }, STEP);
+}
