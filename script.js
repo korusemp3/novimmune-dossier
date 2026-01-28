@@ -21,8 +21,7 @@ document.addEventListener("click", (e) => {
 // ===== CYBER PLAGUE: text glitch (character swapping) =====
 (() => {
   // глитчим ТОЛЬКО карточку с cyber-plague на index
-  const card = document.querySelector(".dossier-tile.cyber-plague") ||
-  document.querySelector("body.cyber-plague");
+  const card = document.querySelector(".dossier-tile.cyber-plague");
   if (!card) return;
 
   const targets = card.querySelectorAll(".glitch-text");
