@@ -59,3 +59,28 @@ setInterval(() => {
   }
 }, everyMs);
 })();
+
+// ===== CYBER PLAGUE: hover glitch sound =====
+(() => {
+  const card = document.querySelector(".dossier-tile.cyber-plague");
+  if (!card) return;
+
+  const audio = new Audio("assets/whisper.mp3");
+  audio.volume = 0.25;      // тише, очень важно
+  audio.preload = "auto";
+
+  let canPlay = true;
+
+  card.addEventListener("mouseenter", () => {
+    if (!canPlay) return;
+
+    try {
+      audio.currentTime = 0;
+      audio.play();
+    } catch (e) {}
+
+    // анти-спам, чтобы не трещало
+    canPlay = false;
+    setTimeout(() => (canPlay = true), 900);
+  });
+})();
