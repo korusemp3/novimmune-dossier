@@ -997,3 +997,12 @@ body::after{
   35%  { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* during global glitch: only glitched texts turn red */
+.fx-glitch-red{
+  background: linear-gradient(90deg, rgba(255,46,46,.95), rgba(255,46,46,.25), rgba(255,46,46,.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255,46,46,.18);
+}
