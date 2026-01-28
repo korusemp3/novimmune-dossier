@@ -129,35 +129,86 @@ setInterval(() => {
   });
 })();
 
-// ===== UI BREAK ON CLICK -> then navigate (Iren card only) =====
+// ===== UI BREAK + DEAD PIXELS -> then navigate (Iren only) =====
 (() => {
   const link = document.querySelector('a.dossier-tile.cyber-plague');
   if (!link) return;
 
-  // создаём оверлей один раз
+  // overlay
   const overlay = document.createElement("div");
   overlay.className = "glitch-overlay";
+
+  // dead pixels container
+  const dead = document.createElement("div");
+  dead.className = "deadpx";
+  overlay.appendChild(dead);
+
   document.body.appendChild(overlay);
 
   let locked = false;
 
+  function spawnDeadPixels() {
+    dead.innerHTML = "";
+    const count = 46; // количество квадратов (крути)
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement("span");
+
+      // размеры (чуть разный “битый” пиксель)
+      const size = 6 + Math.floor(Math.random() * 14); // 6..19
+      s.style.width = size + "px";
+      s.style.height = size + "px";
+
+      // позиция
+      s.style.left = Math.floor(Math.random() * 100) + "%";
+      s.style.top = Math.floor(Math.random() * 100) + "%";
+
+      // вспышка в разные моменты
+      const t = Math.floor(Math.random() * 260); // задержка до 260ms
+      const life = 80 + Math.floor(Math.random() * 160); // длительность
+
+      s.style.animation = `deadPxOne ${life}ms ${t}ms steps(1) forwards`;
+      dead.appendChild(s);
+    }
+  }
+
+  // ключевые кадры на каждый пиксель (через JS инлайн, но нужен keyframes в CSS)
+  // добавим 1 раз в head, если нет
+  if (!document.getElementById("deadPxKF")) {
+    const st = document.createElement("style");
+    st.id = "deadPxKF";
+    st.textContent = `
+      @keyframes deadPxOne{
+        0%{ opacity: 0; transform: translate(0); }
+        20%{ opacity: 1; transform: translate(-1px, 1px); }
+        60%{ opacity: .75; transform: translate(1px, -1px); }
+        100%{ opacity: 0; transform: translate(0); }
+      }
+    `;
+    document.head.appendChild(st);
+  }
+
   link.addEventListener("click", (e) => {
-    // чтобы не срабатывало повторно
+    // --- включить “только первый клик за сессию”:
+    // если хочешь, просто раскомментируй 4 строки ниже
+    /*
+    if (sessionStorage.getItem("iren_ui_break") === "1") {
+      return; // обычный переход без эффекта
+    }
+    sessionStorage.setItem("iren_ui_break", "1");
+    */
+
     if (locked) return;
     locked = true;
 
-    // отменяем мгновенный переход
     e.preventDefault();
 
-    // включаем “ломание”
+    spawnDeadPixels();
+
     overlay.classList.remove("is-on");
-    // reflow, чтобы анимация гарантированно перезапускалась
-    void overlay.offsetWidth;
+    void overlay.offsetWidth; // reflow
     overlay.classList.add("is-on");
 
-    // время под анимацию (совпадает с uiBreak)
     const DELAY = 650;
-
     setTimeout(() => {
       window.location.href = link.href;
     }, DELAY);
