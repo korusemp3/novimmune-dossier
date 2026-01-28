@@ -32,10 +32,9 @@ document.addEventListener("click", (e) => {
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&@*+-=";
 
-  // настройки (можешь крутить)
-  const everyMs = 1200; // как часто попытка глитча
-  const holdMs = 90;    // сколько держим искажение
-  const chance = 0.18;  // доля символов, которые ломаем
+const everyMs = 900;   // было 1200
+const holdMs = 110;    // было 90
+const chance = 0.20;   // было 0.18
 
   function glitchOnce(el) {
     const base = el.dataset.base || el.textContent;
@@ -54,10 +53,9 @@ document.addEventListener("click", (e) => {
     }, holdMs);
   }
 
-  setInterval(() => {
-    // не всегда, чтобы было “вспышками”
-    if (Math.random() < 0.55) {
-      targets.forEach(glitchOnce);
-    }
-  }, everyMs);
+setInterval(() => {
+  if (Math.random() < 0.65) { // было 0.55
+    targets.forEach(glitchOnce);
+  }
+}, everyMs);
 })();
