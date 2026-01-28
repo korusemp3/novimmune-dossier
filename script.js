@@ -128,3 +128,38 @@ setInterval(() => {
     });
   });
 })();
+
+// ===== UI BREAK ON CLICK -> then navigate (Iren card only) =====
+(() => {
+  const link = document.querySelector('a.dossier-tile.cyber-plague');
+  if (!link) return;
+
+  // создаём оверлей один раз
+  const overlay = document.createElement("div");
+  overlay.className = "glitch-overlay";
+  document.body.appendChild(overlay);
+
+  let locked = false;
+
+  link.addEventListener("click", (e) => {
+    // чтобы не срабатывало повторно
+    if (locked) return;
+    locked = true;
+
+    // отменяем мгновенный переход
+    e.preventDefault();
+
+    // включаем “ломание”
+    overlay.classList.remove("is-on");
+    // reflow, чтобы анимация гарантированно перезапускалась
+    void overlay.offsetWidth;
+    overlay.classList.add("is-on");
+
+    // время под анимацию (совпадает с uiBreak)
+    const DELAY = 650;
+
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, DELAY);
+  });
+})();
