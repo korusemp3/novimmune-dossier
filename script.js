@@ -293,3 +293,38 @@ setInterval(() => {
     els.forEach(el => el.textContent = mask());
   }, 850);
 })();
+
+// ===== Daniel: false data flicker under card =====
+(() => {
+  // найди именно карточку Даниэля по href (самый надежный якорь)
+  const danielTile = document.querySelector('a.dossier-tile[href*="daniel"]');
+  if (!danielTile) return;
+
+  const line = danielTile.querySelector(".ghostline");
+  if (!line) return;
+
+  const real = line.getAttribute("data-real") || line.textContent.trim();
+  const fake = line.getAttribute("data-fake") || "ACCESS: OVERRIDE // TRACE FOUND";
+
+  let hover = false;
+  danielTile.addEventListener("mouseenter", () => (hover = true));
+  danielTile.addEventListener("mouseleave", () => (hover = false));
+
+  function flashFake() {
+    line.classList.add("is-fake");
+    line.textContent = fake;
+
+    // короткая вспышка
+    const hold = 120 + Math.floor(Math.random() * 220);
+    setTimeout(() => {
+      line.classList.remove("is-fake");
+      line.textContent = real;
+    }, hold);
+  }
+
+  // редкие “вбросы”, чаще при наведении
+  setInterval(() => {
+    const p = hover ? 0.35 : 0.12; // вероятность
+    if (Math.random() < p) flashFake();
+  }, 850);
+})();
