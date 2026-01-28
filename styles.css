@@ -544,13 +544,4 @@ body::after{
   flex-wrap:wrap;
   gap:8px;
 }
-
-/* HOME: если на странице нет sidebar — делаем 1 колонку */
-body:not(.archive) .layout{
-  grid-template-columns: 1fr;
-}
-
-body:not(.archive) .main{
-  max-width: 760px;
-  margin: 0 auto;
 }
