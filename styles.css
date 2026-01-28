@@ -473,3 +473,19 @@ body::after{
   border-radius: 12px;
   background: #000;
 }
+
+.dossier-card{
+  display:grid;
+  grid-template-columns:96px 1fr; /* ⬅️ ширина портрета */
+  gap:14px;
+  align-items:center;
+}
+
+.dossier-card .thumb{
+  width:96px;
+  height:128px;          /* ⬅️ фиксированная высота */
+  flex-shrink:0;
+  border-radius:10px;
+  overflow:hidden;
+  background:#000;
+}
