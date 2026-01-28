@@ -542,6 +542,7 @@ body::after{
   flex-wrap:wrap;
   gap:8px;
 }
+}
 
 /* HOME PAGE ONLY */
 .home .layout{
@@ -551,4 +552,5 @@ body::after{
 .home .main{
   max-width: 760px;
   margin: 0 auto;
+}
 }
