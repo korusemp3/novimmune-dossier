@@ -363,7 +363,7 @@ setInterval(() => {
     setTimeout(() => {
       tile.classList.remove("is-error");
       if (line) line.remove();
-    }, 800);
+    }, 2000);
   }
 
   tiles.forEach((tile) => {
