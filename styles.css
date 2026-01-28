@@ -1016,3 +1016,7 @@ body::after{
   0%,100%{ opacity:.9 }
   55%{ opacity:.65 }
 }
+
+.glow{
+  text-shadow: 0 0 8px rgba(255,60,60,.35);
+}
