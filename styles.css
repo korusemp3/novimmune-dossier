@@ -553,3 +553,24 @@ body::after{
   max-width: 760px;
   margin: 0 auto;
 }
+
+.connected-as{
+  position: absolute;
+  top: 14px;
+  right: 18px;
+
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+
+  opacity: .45;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.connected-as span{
+  color: #ff2e2e; /* красный ник */
+  opacity: .95;
+  text-shadow: 0 0 6px rgba(255,46,46,.35);
+}
