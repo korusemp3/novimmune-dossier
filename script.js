@@ -65,7 +65,7 @@ setInterval(() => {
   const card = document.querySelector(".dossier-tile.cyber-plague");
   if (!card) return;
 
-  const audio = new Audio("assets/sfx/glitch.mp3");
+  const audio = new Audio("assets/whisper.mp3");
   audio.preload = "auto";
   audio.loop = true;          // чтобы держало помеху, пока держишь курсор
   audio.volume = 0;           // старт с нуля
