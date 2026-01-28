@@ -336,7 +336,7 @@ setInterval(() => {
   if (!tiles.length) return;
 
   // шанс “ошибки” (крути)
-  const ERROR_CHANCE = 0.30; // 30%
+  const ERROR_CHANCE = 0.42; // 42%
 
   // какие НЕ трогаем (у Ирен своя магия)
   const skip = (tile) => tile.classList.contains("cyber-plague");
