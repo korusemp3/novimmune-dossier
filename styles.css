@@ -1039,3 +1039,58 @@ body::after{
   color: transparent;
   text-shadow: 0 0 10px rgba(255,46,46,.18);
 }
+
+/* ===== HOVER REACTION (ALL CARDS EXCEPT IREN/cyber-plague) ===== */
+
+.dossier-tile:not(.cyber-plague) .card{
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    filter 220ms ease;
+  will-change: transform, filter;
+}
+
+/* лёгкий “подъём” + усиление глубины */
+.dossier-tile:not(.cyber-plague):hover .card{
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 18px 55px rgba(0,0,0,.55);
+}
+
+/* тонкая подсветка рамки */
+.dossier-tile:not(.cyber-plague):hover .card{
+  border-color: rgba(255,255,255,.12);
+}
+
+/* микро-реакция плашек статуса */
+.dossier-tile:not(.cyber-plague) .pill{
+  transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
+}
+
+.dossier-tile:not(.cyber-plague):hover .pill{
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  opacity: .98;
+}
+
+/* по желанию: лёгкий “скан” поверх карточки */
+.dossier-tile:not(.cyber-plague) .card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255,255,255,.05) 35%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  transition: opacity 220ms ease;
+}
+
+.dossier-tile:not(.cyber-plague):hover .card::after{
+  opacity:.35;
+}
