@@ -576,66 +576,18 @@ body::after{
 
 /* === CYBER PLAGUE GLITCH === */
 
-.cyber-plague{
+.dossier-tile.cyber-plague .card,
+.dossier-tile .card.cyber-plague{
   position: relative;
   overflow: hidden;
 }
 
-.cyber-plague::before,
-.cyber-plague::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* КРАСНЫЙ ШУМ */
-.cyber-plague::before{
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,40,40,.08),
-      rgba(255,40,40,.08) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  mix-blend-mode: screen;
-  opacity: .6;
-}
-
-/* ГЛИТЧ-СМЕЩЕНИЕ */
-.cyber-plague::after{
-  background: rgba(255,40,40,.12);
-  mix-blend-mode: overlay;
-  animation: cyberGlitch 2.8s infinite steps(1);
-  opacity: .4;
-}
-
-@keyframes cyberGlitch{
-  0%   { transform: translate(0); }
-  10%  { transform: translate(-2px, 1px); }
-  20%  { transform: translate(2px, -1px); }
-  30%  { transform: translate(-1px, 2px); }
-  45%  { transform: translate(1px, -2px); }
-  60%  { transform: translate(-3px, 1px); }
-  75%  { transform: translate(2px, 2px); }
-  100% { transform: translate(0); }
-}
-
-/* ===== GLITCH BURSTS (appear / disappear) ===== */
-.dossier-tile.cyber-plague .card{
-  position: relative;
-  overflow: hidden;
-}
-
-/* слой с полосами/шумом — обычно почти невидим */
-.dossier-tile.cyber-plague .card::before{
+.dossier-tile.cyber-plague .card::before,
+.dossier-tile .card.cyber-plague::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  opacity: 0.06;
-  mix-blend-mode: screen;
 
   background:
     repeating-linear-gradient(
@@ -646,26 +598,26 @@ body::after{
       transparent 4px
     );
 
+  opacity: .05;
+  mix-blend-mode: screen;
   animation: plagueBurst 4.8s infinite steps(1);
 }
 
-/* второй слой — “сдвиг/вспышка” */
-.dossier-tile.cyber-plague .card::after{
+.dossier-tile.cyber-plague .card::after,
+.dossier-tile .card.cyber-plague::after{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  opacity: 0;
-  mix-blend-mode: overlay;
   background: rgba(255,46,46,.16);
+  mix-blend-mode: overlay;
 
+  opacity: 0;
   animation: plagueFlash 4.8s infinite steps(1);
 }
 
 @keyframes plagueBurst{
-  /* тихо */
   0%, 7%, 100% { opacity: .05; transform: translate(0); }
-  /* резкие короткие глитчи */
   8%  { opacity: .55; transform: translate(-2px, 1px); }
   9%  { opacity: .08; transform: translate(0); }
   22% { opacity: .45; transform: translate(2px, -1px); }
@@ -677,39 +629,9 @@ body::after{
 }
 
 @keyframes plagueFlash{
-  /* вспышки только в моменты */
   0%, 7%, 9%, 22%, 23%, 61%, 62%, 86%, 87%, 100% { opacity: 0; }
   8%  { opacity: .28; }
   22% { opacity: .22; }
   61% { opacity: .26; }
   86% { opacity: .20; }
-}
-
-.dossier-tile.cyber-plague{
-  position: relative;
-}
-
-.dossier-tile.cyber-plague::before{
-  content:"";
-  position:absolute;
-  inset: 6px;
-  border-radius: 18px;
-  pointer-events:none;
-
-  box-shadow:
-    0 0 0 1px rgba(255,46,46,.08) inset,
-    0 0 22px rgba(255,46,46,.06);
-
-  opacity: 0;
-  animation: borderFlicker 6.2s infinite steps(1);
-}
-
-@keyframes borderFlicker{
-  0%, 12%, 100% { opacity: 0; }
-  13% { opacity: .65; }
-  14% { opacity: .08; }
-  38% { opacity: .55; }
-  39% { opacity: 0; }
-  78% { opacity: .45; }
-  79% { opacity: 0; }
 }
