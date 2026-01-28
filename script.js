@@ -304,7 +304,7 @@ setInterval(() => {
   if (!line) return;
 
   const real = line.getAttribute("data-real") || line.textContent.trim();
-  const fake = line.getAttribute("data-fake") || "ACCESS: OVERRIDE // TRACE FOUND";
+  const fake = line.getAttribute("data-fake") || "ACCESS: OVERRIDE";
 
   let hover = false;
   danielTile.addEventListener("mouseenter", () => (hover = true));
