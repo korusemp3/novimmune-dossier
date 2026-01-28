@@ -406,3 +406,48 @@ function pick(arr){
     });
   });
 })();
+
+// ===== one-shot click audio (fade in/out) =====
+const SFX = (() => {
+  const a = new Audio("assets/8-bit-riser.wav");
+  a.preload = "auto";
+  a.loop = false;
+  a.volume = 0;
+
+  let t = null;
+  const STEP = 16;
+
+  function clear() { if (t) { clearInterval(t); t = null; } }
+
+  function fadeTo(target, ms, onDone) {
+    clear();
+    const start = a.volume;
+    const steps = Math.max(1, Math.round(ms / STEP));
+    let i = 0;
+    t = setInterval(() => {
+      i++;
+      const p = i / steps;
+      a.volume = Math.max(0, Math.min(1, start + (target - start) * p));
+      if (i >= steps) {
+        clear();
+        a.volume = target;
+        if (onDone) onDone();
+      }
+    }, STEP);
+  }
+
+  async function playOnce({ maxVol = 0.22, fadeIn = 120, hold = 700, fadeOut = 220 } = {}) {
+    try {
+      a.currentTime = 0;
+      await a.play();
+      fadeTo(maxVol, fadeIn);
+      setTimeout(() => {
+        fadeTo(0, fadeOut, () => { a.pause(); a.currentTime = 0; });
+      }, hold);
+    } catch (e) {
+      // если файл не найден/браузер запретил — молчим
+    }
+  }
+
+  return { playOnce };
+})();
