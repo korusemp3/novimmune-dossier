@@ -1167,3 +1167,15 @@ body::before{
   text-decoration: underline;
   opacity: .95;
 }
+
+.connected-as a,
+.connected-as .userlink{
+  color: var(--warn) !important; /* или #ff2e2e если var нет */
+  text-decoration: none;
+}
+
+.connected-as a:hover,
+.connected-as .userlink:hover{
+  text-decoration: underline;
+  opacity: .95;
+}
