@@ -563,7 +563,7 @@ body::after{
   text-transform: uppercase;
 
   opacity: .45;
-  pointer-events: none;
+  pointer-events: auto;   /* ВАЖНО: включаем клики */
   user-select: none;
   white-space: nowrap;
 }
@@ -1168,14 +1168,11 @@ body::before{
   opacity: .95;
 }
 
-.connected-as a,
 .connected-as .userlink{
-  color: var(--warn) !important; /* или #ff2e2e если var нет */
+  color:#ff2e2e;
+  opacity:.95;
+  text-shadow: 0 0 6px rgba(255,46,46,.35);
   text-decoration: none;
+  cursor: pointer;
 }
-
-.connected-as a:hover,
-.connected-as .userlink:hover{
-  text-decoration: underline;
-  opacity: .95;
-}
+.connected-as .userlink:hover{ text-decoration: underline; }
