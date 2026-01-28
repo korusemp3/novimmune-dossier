@@ -328,3 +328,81 @@ setInterval(() => {
     if (Math.random() < p) flashFake();
   }, 850);
 })();
+
+// ===== Local tile error state (sometimes blocks, next click passes) =====
+(() => {
+  // применяем ко всем карточкам на экране выбора
+  const tiles = document.querySelectorAll("a.dossier-tile");
+  if (!tiles.length) return;
+
+  // шанс “ошибки” (крути)
+  const ERROR_CHANCE = 0.30; // 30%
+
+  // какие НЕ трогаем (у Ирен своя магия)
+  const skip = (tile) => tile.classList.contains("cyber-plague");
+
+  // запоминаем “следующий клик пропустить”
+  const passKey = (href) => `tile_pass_${href}`;
+
+  function showError(tile, msg) {
+    tile.classList.add("is-error");
+
+    // ищем meta-блок, куда воткнуть строку
+    const meta = tile.querySelector(".meta") || tile.querySelector(".card") || tile;
+
+    // не дублируем
+    let line = meta.querySelector(".tile-errorline");
+    if (!line) {
+      line = document.createElement("div");
+      line.className = "tile-errorline mono";
+      meta.appendChild(line);
+    }
+    line.textContent = msg;
+
+    // убрать через чуть-чуть
+    setTimeout(() => {
+      tile.classList.remove("is-error");
+      if (line) line.remove();
+    }, 800);
+  }
+
+  tiles.forEach((tile) => {
+    if (skip(tile)) return;
+
+    tile.addEventListener("click", (e) => {
+      const href = tile.getAttribute("href") || "";
+      const key = passKey(href);
+
+      // если уже “пробило” — пускаем
+      if (sessionStorage.getItem(key) === "1") {
+        sessionStorage.removeItem(key);
+        return;
+      }
+
+      // иногда блокируем
+      if (Math.random() < ERROR_CHANCE) {
+        e.preventDefault();
+
+        // следующий клик — пропустить
+        sessionStorage.setItem(key, "1");
+
+const ERROR_MESSAGES = [
+  "CONNECTION UNSTABLE // RETRY",
+  "PACKET LOSS // CHANNEL DEGRADED",
+  "AUTH TIMEOUT // SESSION INVALID",
+  "TRACE DETECTED // ROUTE COMPROMISED",
+  "SYNC ERROR // DATA DESYNC",
+  "UPLINK FAILURE // SIGNAL LOST"
+];
+
+function pick(arr){
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+        
+        showError(tile, pick(ERROR_MESSAGES));
+
+      }
+    });
+  });
+})();
