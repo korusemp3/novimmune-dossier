@@ -638,37 +638,175 @@ body::after{
 
 /* ===== GLITCH DISTORTION (GEOMETRY BREAK) ===== */
 
-.dossier-tile.cyber-plague .card{
+.dossier-tile.cyber-plague .card,
+.dossier-tile .card.cyber-plague{
+  position: relative;
+  overflow: hidden;
   will-change: clip-path, transform;
-  animation: plagueDistort 7.2s infinite steps(1);
+  /* редкий геом-глитч (синхроним по 4.8s) */
+  animation: plagueDistort 4.8s infinite steps(1);
 }
 
-@keyframes plagueDistort{
-  /* норма */
-  0%, 92%, 100%{
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
-
-  /* искажения */
-  93%{
-    clip-path: inset(4% 0 12% 0);
-    transform: translate(-2px, 1px);
-  }
-
-  94%{
-    clip-path: inset(18% 0 6% 0);
-    transform: translate(2px, -1px);
-  }
-
-  95%{
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
+/* --- базовые слои глитча поверх карточки --- */
+.dossier-tile.cyber-plague .card::before,
+.dossier-tile .card.cyber-plague::before,
+.dossier-tile.cyber-plague .card::after,
+.dossier-tile .card.cyber-plague::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
 }
 
-.dossier-tile.cyber-plague .card::after{
+/* слой скан-линий (обычно тихий, иногда вспышка) */
+.dossier-tile.cyber-plague .card::before,
+.dossier-tile .card.cyber-plague::before{
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,46,46,.16),
+      rgba(255,46,46,.16) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  mix-blend-mode: screen;
+  opacity: .04;
+  animation: plagueNoise 4.8s infinite steps(1);
+}
+
+/* слой вспышки/оверлея + “двойник” по краям */
+.dossier-tile.cyber-plague .card::after,
+.dossier-tile .card.cyber-plague::after{
+  background: rgba(255,46,46,.18);
+  mix-blend-mode: overlay;
+  opacity: 0;
+  animation: plagueFlash 4.8s infinite steps(1);
+
+  /* лёгкий “канальный” сдвиг */
   box-shadow:
     -1px 0 rgba(255,46,46,.35),
      1px 0 rgba(255,46,46,.15);
+}
+
+/* --- геометрический разрыв карточки (редко, коротко) --- */
+@keyframes plagueDistort{
+  0%, 86%, 100%{
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  87%{
+    clip-path: inset(6% 0 14% 0);
+    transform: translate(-2px, 1px);
+  }
+  88%{
+    clip-path: inset(20% 0 8% 0);
+    transform: translate(2px, -1px);
+  }
+  89%{
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+}
+
+/* --- шум/полосы вспыхивают/пропадают --- */
+@keyframes plagueNoise{
+  0%, 7%, 22%, 61%, 86%, 100% { opacity: .04; transform: translate(0); }
+  8%  { opacity: .55; transform: translate(-2px, 1px); }
+  9%  { opacity: .06; transform: translate(0); }
+  23% { opacity: .06; transform: translate(0); }
+  62% { opacity: .06; transform: translate(0); }
+  87% { opacity: .05; transform: translate(0); }
+}
+
+/* --- красные вспышки оверлея --- */
+@keyframes plagueFlash{
+  0%, 7%, 9%, 22%, 23%, 61%, 62%, 86%, 87%, 100% { opacity: 0; }
+  8%  { opacity: .28; }
+  22% { opacity: .22; }
+  61% { opacity: .26; }
+  86% { opacity: .20; }
+}
+
+/* =======================
+   IMAGE GLITCH (только портрет)
+   ======================= */
+
+.dossier-tile.cyber-plague .thumb,
+.dossier-tile .card.cyber-plague .thumb{
+  position: relative;
+  overflow: hidden;
+}
+
+.dossier-tile.cyber-plague .thumb img,
+.dossier-tile .card.cyber-plague .thumb img{
+  will-change: transform, filter;
+  animation: thumbGlitch 4.8s infinite steps(1);
+}
+
+@keyframes thumbGlitch{
+  0%, 86%, 100% { transform: translate(0); filter: none; }
+  87% { transform: translate(-3px, 1px); filter: contrast(1.15) saturate(1.25); }
+  88% { transform: translate(3px, -1px); filter: contrast(1.05) saturate(1.10); }
+  89% { transform: translate(0); filter: none; }
+}
+
+/* =======================
+   HOVER: pulse + чаще глитч
+   ======================= */
+
+.dossier-tile.cyber-plague:hover,
+.dossier-tile:hover .card.cyber-plague{
+  animation: plaguePulse 1.1s ease-in-out infinite;
+}
+
+@keyframes plaguePulse{
+  0% { transform: translateY(0) scale(1); }
+  50%{ transform: translateY(-1px) scale(1.01); }
+  100%{ transform: translateY(0) scale(1); }
+}
+
+/* ускоряем вспышки на hover */
+.dossier-tile.cyber-plague:hover .card,
+.dossier-tile:hover .card.cyber-plague{
+  animation-duration: 3.2s;
+}
+
+.dossier-tile.cyber-plague:hover .card::before,
+.dossier-tile.cyber-plague:hover .card::after,
+.dossier-tile:hover .card.cyber-plague::before,
+.dossier-tile:hover .card.cyber-plague::after{
+  animation-duration: 3.2s;
+}
+
+.dossier-tile.cyber-plague:hover .thumb img,
+.dossier-tile:hover .card.cyber-plague .thumb img{
+  animation-duration: 3.2s;
+}
+
+/* =======================
+   RED NAME (optional)
+   ======================= */
+.dossier-tile.cyber-plague .name,
+.dossier-tile .card.cyber-plague .name{
+  color: #ff2e2e;
+  text-shadow: 0 0 8px rgba(255,46,46,.45);
+}
+
+/* =======================
+   A11y: reduce motion
+   ======================= */
+@media (prefers-reduced-motion: reduce){
+  .dossier-tile.cyber-plague .card,
+  .dossier-tile .card.cyber-plague,
+  .dossier-tile.cyber-plague .thumb img,
+  .dossier-tile .card.cyber-plague .thumb img{
+    animation: none !important;
+  }
+  .dossier-tile.cyber-plague .card::before,
+  .dossier-tile.cyber-plague .card::after,
+  .dossier-tile .card.cyber-plague::before,
+  .dossier-tile .card.cyber-plague::after{
+    animation: none !important;
+    opacity: .18;
+  }
 }
