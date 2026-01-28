@@ -857,3 +857,50 @@ body::after{
   62%{ opacity: .55; clip-path: inset(0 0 60% 0); }
   63%{ opacity: 0; }
 }
+
+/* ===== plague tag hover swap ===== */
+
+.dossier-tile.cyber-plague .plague-swap{
+  position: relative;
+  overflow: hidden;
+}
+
+/* показываем оригинал обычно */
+.dossier-tile.cyber-plague .plague-swap{
+  color: rgba(255,46,46,.9);
+}
+
+/* при наведении прячем оригинальный текст */
+.dossier-tile.cyber-plague:hover .plague-swap{
+  color: transparent;
+}
+
+/* и рисуем новый текст поверх */
+.dossier-tile.cyber-plague:hover .plague-swap::after{
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  text-align: center;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  background: linear-gradient(90deg, rgba(255,46,46,.95), rgba(255,46,46,.2), rgba(255,46,46,.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 0 10px rgba(255,46,46,.25);
+  animation: tagFlicker 0.9s steps(1) infinite;
+}
+
+@keyframes tagFlicker{
+  0%, 60%, 100% { opacity: 1; }
+  61% { opacity: .35; }
+  62% { opacity: 1; }
+  80% { opacity: .6; }
+  81% { opacity: 1; }
+}
