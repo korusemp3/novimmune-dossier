@@ -684,3 +684,32 @@ body::after{
   61% { opacity: .26; }
   86% { opacity: .20; }
 }
+
+.dossier-tile.cyber-plague{
+  position: relative;
+}
+
+.dossier-tile.cyber-plague::before{
+  content:"";
+  position:absolute;
+  inset: 6px;
+  border-radius: 18px;
+  pointer-events:none;
+
+  box-shadow:
+    0 0 0 1px rgba(255,46,46,.08) inset,
+    0 0 22px rgba(255,46,46,.06);
+
+  opacity: 0;
+  animation: borderFlicker 6.2s infinite steps(1);
+}
+
+@keyframes borderFlicker{
+  0%, 12%, 100% { opacity: 0; }
+  13% { opacity: .65; }
+  14% { opacity: .08; }
+  38% { opacity: .55; }
+  39% { opacity: 0; }
+  78% { opacity: .45; }
+  79% { opacity: 0; }
+}
