@@ -103,7 +103,7 @@ setInterval(() => {
       }
     }, STEP_MS);
   }
-
+  
   card.addEventListener("mouseenter", async () => {
     // автоплей-политики: иногда без первого клика play() может быть заблокирован
     try {
@@ -187,6 +187,47 @@ setInterval(() => {
     document.head.appendChild(st);
   }
 
+    function startGlobalTextGlitch(durationMs) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&@*+-=";
+  const everyMs = 80;
+  const chance = 0.14;
+
+  // берём только элементы, где реально есть текст и нет вложенных тегов (чтобы не ломать верстку)
+  const nodes = Array.from(document.querySelectorAll("body *:not(script):not(style):not(svg)"))
+    .filter(el => el.children.length === 0 && el.textContent && el.textContent.trim().length > 0);
+
+  // сохраним исходники
+  nodes.forEach(el => {
+    if (!el.dataset.baseText) el.dataset.baseText = el.textContent;
+  });
+
+  const t0 = Date.now();
+  const timer = setInterval(() => {
+    for (const el of nodes) {
+      const base = el.dataset.baseText;
+      if (!base) continue;
+
+      const arr = base.split("");
+      for (let i = 0; i < arr.length; i++) {
+        const ch = arr[i];
+        if (ch === " " || ch === "\n" || ch === "\t") continue;
+        if (Math.random() < chance) {
+          arr[i] = alphabet[(Math.random() * alphabet.length) | 0];
+        }
+      }
+      el.textContent = arr.join("");
+    }
+
+    if (Date.now() - t0 >= durationMs) {
+      clearInterval(timer);
+      // восстановить
+      nodes.forEach(el => {
+        if (el.dataset.baseText) el.textContent = el.dataset.baseText;
+      });
+    }
+  }, everyMs);
+}
+  
   link.addEventListener("click", (e) => {
     // --- включить “только первый клик за сессию”:
     // если хочешь, просто раскомментируй 4 строки ниже
@@ -202,13 +243,15 @@ setInterval(() => {
 
     e.preventDefault();
 
+    startGlobalTextGlitch(DELAY);
+    
     spawnDeadPixels();
 
     overlay.classList.remove("is-on");
     void overlay.offsetWidth; // reflow
     overlay.classList.add("is-on");
 
-    const DELAY = 650;
+    const DELAY = 1100;
     setTimeout(() => {
       window.location.href = link.href;
     }, DELAY);
