@@ -243,6 +243,8 @@ setInterval(() => {
 
     e.preventDefault();
 
+    const DELAY = 1100;
+    
     startGlobalTextGlitch(DELAY);
     
     spawnDeadPixels();
@@ -251,7 +253,7 @@ setInterval(() => {
     void overlay.offsetWidth; // reflow
     overlay.classList.add("is-on");
 
-    const DELAY = 1100;
+    
     setTimeout(() => {
       window.location.href = link.href;
     }, DELAY);
