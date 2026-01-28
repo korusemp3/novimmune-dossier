@@ -1156,3 +1156,14 @@ body::before{
   0%, 100% { opacity: .10; filter: blur(.0px); }
   50%      { opacity: .16; filter: blur(.4px); }
 }
+
+.userlink{
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.userlink:hover{
+  text-decoration: underline;
+  opacity: .95;
+}
