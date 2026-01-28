@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>METACORP // DOSSIER: DANIEL ARMET</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root{
+  --bg:#060405;
+
+  --panel1: rgba(20,8,12,.82);
+  --panel2: rgba(14,6,9,.78);
+
+  --line: rgba(255,160,180,.25);
+
+  --text:#fff0f4;
+  --muted:#d6a3b0;
+
+  --warn:#ff7fa1;   /* основной персиково-розовый */
+  --cyan:#ff9fb8;
+}
+
+.q:first-child{
+  border-color: rgba(255,80,100,.35);
+  background: rgba(255,40,60,.08);
+}
+
+    
+body{
+  background:
+    radial-gradient(900px 600px at 60% 10%, rgba(255,140,170,.18), transparent 60%),
+    radial-gradient(900px 600px at 20% 40%, rgba(255,170,190,.12), transparent 60%),
+    var(--bg);
+}
+
+  </style>
+</head>
+  
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand__title">METACORP // INTERNAL DOSSIER</div>
+      <div class="brand__sub">INTERNAL USE ONLY // CLASSIFIED</div>
+      <div class="brand__meta mono">
+        DOSSIER REV: 0.1 // SUBJECT: DANIEL ARMET // STATUS: ACTIVE
+      </div>
+    </div>
+
+    <nav class="quick">
+      <a href="index.html" class="q">TERMINAL</a>
+      <a href="#subject" class="q">SUBJECT</a>
+      <a href="#objective" class="q">OP</a>
+      <a href="#medical" class="q">MED</a>
+      <a href="#notes" class="q">NOTES</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="side">
+      <section class="card" id="subject">
+        <div class="card__title">СУБЪЕКТ</div>
+
+        <div class="photo">
+          <img src="../assets/portrait-placeholder.jpg" alt="Daniel Armet — archival image">
+          <div class="photo__cap">FACE OBSCURED // ARCHIVAL</div>
+        </div>
+
+        <ul class="kvlist">
+          <li><span>Имя</span><b>Даниэль Армет</b></li>
+          <li><span>Роль</span><b>Техник / Агент Metacorp</b></li>
+          <li><span>Номад-ранг</span><b class="warn">ВЫСОКИЙ</b></li>
+          <li><span>Происхождение</span><b class="redact is-static">████████</b></li>
+          <li><span>Статус</span><b>ACTIVE</b></li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">TECH</span>
+          <span class="tag">AGENT</span>
+          <span class="tag">NOMAD-AFFILIATED</span>
+          <span class="tag">CLONE</span>
+        </div>
+
+        <div class="micro mono">
+          Identity acknowledged by subject.<br>
+          Full origin chain: unavailable.
+        </div>
+      </section>
+    </aside>
+
+    <section class="main">
+      <section class="card" id="objective">
+        <div class="card__title">ИНФОРМАЦИЯ</div>
+
+        <p>
+          Субъект является
+          искусственно выращенным клоном,
+          созданным в рамках неизвестной программы.<br>
+          Данные предположения официально не подтверждены.
+          Исходная документация отсутствует.
+        </p>
+
+        <p>
+          Предыстория до активации: <span class="redact is-static">НЕДОСТУПНО</span>.
+          Возраст актива: <b>~6 лет</b>.
+        </p>
+
+      </section>
+
+      <section class="card" id="origin">
+  <div class="card__title">ПРОИСХОЖДЕНИЕ / СТАТУС</div>
+
+  <p>
+    Субъект с высокой вероятностью является
+    искусственно выращенным клоном,
+    созданным в рамках неизвестной программы
+    с чётко заданной операционной целью.
+  </p>
+
+  <p class="muted">
+    Первоначально предполагалось, что субъект предназначен
+    для <span class="warn"><s>краткосрочной эксплуатации</s></span>
+    <span class="warn"><s>утилизации после выполнения задачи</s></span>
+    ограниченного цикла активного применения.
+  </p>
+
+  <p class="muted">
+    Данные предположения официально не подтверждены.
+    Исходная документация отсутствует.
+  </p>
+</section>
+
+      <section class="card" id="family">
+  <div class="card__title">СЕМЕЙНЫЕ СВЯЗИ (ОГРАНИЧЕННЫЙ ДОСТУП)</div>
+
+  <p>
+    Биологическая семья субъекта отсутствует.
+  </p>
+
+  <p>
+    Подтверждено существование других идентичных экземпляров,
+    классифицированных как <span class="pill">SIBLING SUBJECTS</span>.
+  </p>
+
+  <p class="muted">
+    Известно минимум о двух женских экземплярах.
+    Их текущий статус, степень автономии и местоположение неизвестны.
+  </p>
+
+  <p class="muted">
+    Контакт между субъектами не зафиксирован.
+    Вероятность преднамеренного разделения — высокая.
+  </p>
+</section>
+
+      <section class="card" id="relations">
+  <div class="card__title">СОЦИАЛЬНЫЕ СВЯЗИ / ПОВЕДЕНИЕ</div>
+
+  <p>
+    Несмотря на искусственное происхождение,
+    субъект демонстрирует устойчивую способность
+    к формированию социальных связей.
+  </p>
+
+  <p>
+    Друзей заводит легко.
+    Проявляет внимание к эмоциональному состоянию окружающих.
+    Эмпатия выражена и стабильна.
+  </p>
+
+  <p class="muted">
+    Наблюдаются трудности интерпретации
+    неформальных человеческих социальных норм.
+    Субъект склонен к прямым формулировкам
+    и буквальному восприятию взаимодействий.
+  </p>
+</section>
+
+      
+      <section class="card" id="medical">
+        <div class="card__title">МЕДИЦИНСКАЯ КАРТА (ВЫДЕРЖКА)</div>
+
+        <ul class="kvlist">
+          <li><span>Нейропрофиль</span><b class="warn">НЕСТАНДАРТНЫЙ</b></li>
+          <li><span>Псих. модель</span><b>Эмпатическая</b></li>
+          <li><span>Соц. адаптация</span><b>ФУНКЦИОНАЛЬНА</b></li>
+          <li><span>Коммуникация</span><b>ПРЯМОЛИНЕЙНАЯ</b></li>
+          <li><span>Дерматология</span><b class="warn">АНОМАЛИЯ / РИСК</b></li>
+          <li><span>Импланты</span><b class="redact" data-reveal="highly augmented">██████</b></li>
+        </ul>
+
+        <p class="muted" style="margin-top:12px">
+          Примечание: маскировка лица бинтами может быть медицинской или поведенческой мерой.
+        </p>
+      </section>
+
+      <section class="card" id="notes">
+        <div class="card__title">ПОЛЕВЫЕ ЗАМЕТКИ</div>
+        <ul class="list">
+          <li>Друзей заводит легко, внимателен к людям.</li>
+          <li>Иногда не считывает «человеческие» социальные правила и говорит слишком прямо.</li>
+          <li>Много моделей поведения выучено по медиа/брейндансам.</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
