@@ -968,3 +968,32 @@ body::after{
 @media (prefers-reduced-motion: reduce){
   .glitch-overlay.is-on{ animation: none; opacity: .35; }
 }
+
+/* ===== DEAD PIXEL LAYER ===== */
+.glitch-overlay .deadpx{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.glitch-overlay.is-on .deadpx{
+  animation: deadPxBurst 650ms steps(1) forwards;
+}
+
+.glitch-overlay .deadpx span{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,46,46,.85);
+  box-shadow: 0 0 12px rgba(255,46,46,.35);
+  opacity: 0;
+}
+
+@keyframes deadPxBurst{
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  35%  { opacity: 1; }
+  100% { opacity: 0; }
+}
