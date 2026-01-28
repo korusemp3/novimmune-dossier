@@ -554,6 +554,7 @@ body::after{
   max-width: 760px;
   margin: 0 auto;
 }
+}
 
 .session{
   position:absolute;
