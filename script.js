@@ -259,7 +259,7 @@ setInterval(() => {
     e.preventDefault();
     stopWhisperNow();
 
-SFX.playOnce({ maxVol: 0.24, fadeIn: 90, hold: 800, fadeOut: 260 });
+SFX.playOnce({ maxVol: 0.34, fadeIn: 90, hold: 800, fadeOut: 260 });
     
     const DELAY = 1100;
     
