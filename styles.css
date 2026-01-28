@@ -801,3 +801,59 @@ body::after{
     opacity: .18;
   }
 }
+
+/* Красный “не solid” (градиент по тексту) */
+.cyber-plague .name,
+.cyber-plague .role,
+.cyber-plague .tags{
+  background: linear-gradient(90deg, rgba(255,46,46,.95), rgba(255,46,46,.25), rgba(255,46,46,.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Двойник текста + срезы (визуально как “символы поплыли”) */
+.cyber-plague [data-glitch]{
+  position: relative;
+}
+
+.cyber-plague [data-glitch]::before,
+.cyber-plague [data-glitch]::after{
+  content: attr(data-glitch);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, rgba(255,46,46,.95), rgba(255,46,46,.1));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.cyber-plague [data-glitch]::before{
+  transform: translate(-1px,0);
+  text-shadow: 1px 0 rgba(255,46,46,.35);
+  animation: textFlicker 4.8s infinite steps(1);
+}
+
+.cyber-plague [data-glitch]::after{
+  transform: translate(1px,0);
+  text-shadow: -1px 0 rgba(255,46,46,.2);
+  animation: textFlicker2 4.8s infinite steps(1);
+}
+
+@keyframes textFlicker{
+  0%, 86%, 100%{ opacity: 0; clip-path: inset(0 0 0 0); }
+  87%{ opacity: .8; clip-path: inset(0 0 72% 0); }
+  88%{ opacity: .35; clip-path: inset(40% 0 20% 0); }
+  89%{ opacity: 0; }
+}
+
+@keyframes textFlicker2{
+  0%, 21%, 61%, 100%{ opacity: 0; }
+  22%{ opacity: .65; clip-path: inset(55% 0 0 0); }
+  23%{ opacity: 0; }
+  62%{ opacity: .55; clip-path: inset(0 0 60% 0); }
+  63%{ opacity: 0; }
+}
