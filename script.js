@@ -276,35 +276,20 @@ setInterval(() => {
 
 // ===== DYNAMIC REDACT: animated █-mask (for is-dynamic) =====
 (() => {
-  const targets = document.querySelectorAll(".redact.is-dynamic");
-  if (!targets.length) return;
+  const els = document.querySelectorAll(".redact.is-dynamic");
+  if (!els.length) return;
 
   const alphabet = "█▓▒░#@!$%&*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const minLen = 6;
-  const maxLen = 10;
+  const minLen = 6, maxLen = 10;
 
-  function randMask() {
+  function mask() {
     const len = (Math.random() * (maxLen - minLen + 1) + minLen) | 0;
-    let out = "";
-    for (let i = 0; i < len; i++) {
-      out += alphabet[(Math.random() * alphabet.length) | 0];
-    }
-    return out;
+    let s = "";
+    for (let i = 0; i < len; i++) s += alphabet[(Math.random() * alphabet.length) | 0];
+    return s;
   }
 
-  // сохраним исходник, если он есть
-  targets.forEach((el) => {
-    if (!el.dataset.baseMask) el.dataset.baseMask = el.textContent.trim() || "██████";
-  });
-
   setInterval(() => {
-    targets.forEach((el) => {
-      // иногда оставляем “стабильный” вид, чтобы не бесило
-      if (Math.random() < 0.35) {
-        el.textContent = el.dataset.baseMask;
-      } else {
-        el.textContent = randMask();
-      }
-    });
+    els.forEach(el => el.textContent = mask());
   }, 850);
 })();
