@@ -60,27 +60,71 @@ setInterval(() => {
 }, everyMs);
 })();
 
-// ===== CYBER PLAGUE: hover glitch sound =====
+// ===== CYBER PLAGUE: hover glitch sound (fade in/out + stop on leave) =====
 (() => {
   const card = document.querySelector(".dossier-tile.cyber-plague");
   if (!card) return;
 
-  const audio = new Audio("assets/whisper.mp3");
-  audio.volume = 0.25;      // тише, очень важно
+  const audio = new Audio("assets/sfx/glitch.mp3");
   audio.preload = "auto";
+  audio.loop = true;          // чтобы держало помеху, пока держишь курсор
+  audio.volume = 0;           // старт с нуля
 
-  let canPlay = true;
+  const MAX_VOL = 0.22;       // финальная громкость
+  const FADE_MS = 220;        // скорость фейда
+  const STEP_MS = 16;         // ~60fps
 
-  card.addEventListener("mouseenter", () => {
-    if (!canPlay) return;
+  let fadeTimer = null;
+  let startedOnce = false;
 
+  function clearFade() {
+    if (fadeTimer) {
+      clearInterval(fadeTimer);
+      fadeTimer = null;
+    }
+  }
+
+  function fadeTo(targetVol, onDone) {
+    clearFade();
+    const startVol = audio.volume;
+    const steps = Math.max(1, Math.round(FADE_MS / STEP_MS));
+    let i = 0;
+
+    fadeTimer = setInterval(() => {
+      i++;
+      const t = i / steps;
+      const v = startVol + (targetVol - startVol) * t;
+      audio.volume = Math.max(0, Math.min(1, v));
+
+      if (i >= steps) {
+        clearFade();
+        audio.volume = targetVol;
+        if (onDone) onDone();
+      }
+    }, STEP_MS);
+  }
+
+  card.addEventListener("mouseenter", async () => {
+    // автоплей-политики: иногда без первого клика play() может быть заблокирован
     try {
-      audio.currentTime = 0;
-      audio.play();
-    } catch (e) {}
+      if (!startedOnce) {
+        audio.currentTime = 0;
+        await audio.play();
+        startedOnce = true;
+      } else if (audio.paused) {
+        await audio.play();
+      }
+      fadeTo(MAX_VOL);
+    } catch (e) {
+      // если браузер заблокировал — просто не играем
+    }
+  });
 
-    // анти-спам, чтобы не трещало
-    canPlay = false;
-    setTimeout(() => (canPlay = true), 900);
+  card.addEventListener("mouseleave", () => {
+    // плавно в ноль, потом стоп, чтобы не жрало ресурс
+    fadeTo(0, () => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
   });
 })();
