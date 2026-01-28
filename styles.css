@@ -554,4 +554,18 @@ body::after{
   max-width: 760px;
   margin: 0 auto;
 }
+
+.session{
+  position:absolute;
+  top:16px;
+  right:18px;
+  font-size:10px;
+  letter-spacing:.16em;
+  color: var(--muted);
+  opacity:.85;
+  pointer-events:none;
+}
+
+.session .warn{
+  color: var(--warn);
 }
