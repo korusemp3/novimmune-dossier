@@ -1215,3 +1215,16 @@ body::before{
     box-shadow .2s ease,
     transform .15s ease;
 }
+
+.nav-files a:hover{
+  color: #fff;
+  border-color: rgba(120,180,255,.6);
+  box-shadow:
+    0 0 0 1px rgba(120,180,255,.15),
+    0 0 24px rgba(120,180,255,.15);
+  transform: translateY(-1px);
+}
+
+.nav-files a:active{
+  transform: translateY(0);
+}
