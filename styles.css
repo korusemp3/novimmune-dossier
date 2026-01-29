@@ -1183,14 +1183,14 @@ body::before{
   filter: grayscale(1);
 }
 
-.nav-files{
+.nav-archive{
   margin-top: 32px;
   display: flex;
   justify-content: space-between;
   gap: 16px;
 }
 
-.nav-files a{
+.nav-archive a{
   position: relative;
   padding: 10px 16px;
   font-family: var(--mono);
@@ -1216,7 +1216,7 @@ body::before{
     transform .15s ease;
 }
 
-.nav-files a:hover{
+.nav-archive a:hover{
   color: #fff;
   border-color: rgba(120,180,255,.6);
   box-shadow:
@@ -1225,6 +1225,6 @@ body::before{
   transform: translateY(-1px);
 }
 
-.nav-files a:active{
+.nav-archive a:active{
   transform: translateY(0);
 }
