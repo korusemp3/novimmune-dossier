@@ -1176,3 +1176,9 @@ body::before{
   cursor: pointer;
 }
 .connected-as .userlink:hover{ text-decoration: underline; }
+
+.audio-log{
+  width:100%;
+  margin:12px 0;
+  filter: grayscale(1);
+}
