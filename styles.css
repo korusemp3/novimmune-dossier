@@ -1285,3 +1285,53 @@ body::before{
   color: rgba(120,180,255,.4);
   margin-bottom: 4px;
 }
+
+/* rfrf*/
+.voice-log {
+  margin-top: 16px;
+}
+
+.voice-meta {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* сам плеер */
+.voice-log audio {
+  width: 100%;
+  height: 36px;
+  background: rgba(255,255,255,.06);
+  border-radius: 18px;
+  padding: 6px;
+  outline: none;
+}
+
+/* Chrome / Edge */
+.voice-log audio::-webkit-media-controls-panel {
+  background: rgba(20,24,28,.9);
+}
+
+.voice-log audio::-webkit-media-controls-play-button,
+.voice-log audio::-webkit-media-controls-mute-button {
+  filter: brightness(.9);
+}
+
+.voice-log audio::-webkit-media-controls-current-time-display,
+.voice-log audio::-webkit-media-controls-time-remaining-display {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #cfd6df;
+}
+
+/* ползунок */
+.voice-log audio::-webkit-media-controls-timeline {
+  filter: grayscale(1) brightness(.8);
+}
+
+/* Firefox (ограниченно, но норм) */
+.voice-log audio {
+  accent-color: #8aa2b2;
+}
